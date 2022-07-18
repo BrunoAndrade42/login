@@ -3,8 +3,24 @@ import * as Styles from 'styles/pages/index.styles'
 import { Wrapper } from 'components/wrapper'
 import { Button } from 'components/Button'
 import { Input } from 'components/Input'
+import Link from 'next/link'
+import { useState } from 'react'
 
 const Home: NextPage = () => {
+
+  const [email, setEmail] = useState("")
+  const [senha, setSenha] = useState("")
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const formLogin = {
+      email,
+      senha
+    }
+
+    console.log(formLogin)
+  }
+
   return (
     <Styles.Container>
       <Styles.Content>
@@ -19,15 +35,19 @@ const Home: NextPage = () => {
               <Styles.Text> Faça o login </Styles.Text>
             </Wrapper>
 
-            <Input placeholder="Login" />
-            <Input placeholder="Password" />
+            <Input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+            <Input placeholder="Password" onChange={(e) => setSenha(e.target.value)} />
 
             {/* <Button variant="outlined">outlined</Button>
             <Button>Normal</Button> */}
-            <Button  type="submit">
+            <Button  type="submit" onClick={handleSubmit} >
               Entrar
             </Button>
-            <Styles.RegisterLink> Cadastre-se aqui! </Styles.RegisterLink>
+              <Link href="/cadastro">
+                <Styles.RegisterLink> 
+                    Cadastre-se aqui! 
+                </Styles.RegisterLink>
+              </Link>
           </Styles.FormContent>
         </Styles.FormContainer>
       </Styles.Content>

@@ -4,8 +4,6 @@ interface InputProps {
   width?: string | number
 }
 
-// export
-
 export const Input = styled.input<InputProps>`
   ${({ theme, width }) => {
     return css`
@@ -17,6 +15,10 @@ export const Input = styled.input<InputProps>`
 
       background-color: ${theme.colors.gray};
       border-radius: 10px;
+
+    &:focus {
+      outline: 1px solid ${theme.colors.orange};
+    }
     `
   }}
 `
